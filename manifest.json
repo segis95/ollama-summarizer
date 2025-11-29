@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Paragraph Summarizer (Ollama)",
+  "version": "1.0.0",
+  "description": "Highlights paragraphs, colors them on click, and summarizes via local Ollama.",
+  "permissions": ["storage"],
+  "host_permissions": ["http://localhost/"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_idle",
+      "js": ["content.js"]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
+}
