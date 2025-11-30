@@ -1,5 +1,7 @@
 // Ollama config
 const OLLAMA_API = "http://localhost:11434/api/chat";
+// Uncomment for OpenAI API
+// const OLLAMA_API = "http://localhost:8000/v1/chat/completions"
 let MODEL = "llama3.1:8b";
 
 // Loading a model on start
@@ -50,6 +52,12 @@ async function callOllamaChat(messages, options = {}) {
   const data = await res.json();
   // data.message.content contains the response
   return data;
+  // Uncomment for OpenAI API
+  // return {
+  //   message: {
+  //     content: data.choices[0].message.content
+  //   }
+  // };
 }
 
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
